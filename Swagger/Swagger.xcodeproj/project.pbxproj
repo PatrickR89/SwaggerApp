@@ -18,6 +18,16 @@
 		CDF375E029A5FF690053F390 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375DF29A5FF690053F390 /* MainCoordinator.swift */; };
 		CDF375E329A603970053F390 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375E229A603970053F390 /* LoginView.swift */; };
 		CDF375E629A604210053F390 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375E529A604210053F390 /* UIConstants.swift */; };
+		CDF375E929A6145C0053F390 /* UItextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375E829A6145C0053F390 /* UItextField+Extensions.swift */; };
+		CDF375ED29A623F90053F390 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375EC29A623F90053F390 /* UIImage+Extensions.swift */; };
+		CDF375FA29A63A220053F390 /* Satoshi-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF375F029A63A210053F390 /* Satoshi-Regular.otf */; };
+		CDF3760229A63A220053F390 /* Satoshi-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF375F829A63A210053F390 /* Satoshi-Bold.otf */; };
+		CDF3760829A63EE40053F390 /* Supreme-Extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF3760729A63EE40053F390 /* Supreme-Extrabold.otf */; };
+		CDF3760D29A63F030053F390 /* Supreme-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF3760A29A63F030053F390 /* Supreme-Regular.otf */; };
+		CDF3760E29A63F030053F390 /* Supreme-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF3760B29A63F030053F390 /* Supreme-Italic.otf */; };
+		CDF3760F29A63F030053F390 /* Supreme-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF3760C29A63F030053F390 /* Supreme-Medium.otf */; };
+		CDF3761229A63F680053F390 /* FFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDF3761129A63F680053F390 /* FFL.txt */; };
+		CDF3761629A63FCC0053F390 /* Supreme-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF3761529A63FCC0053F390 /* Supreme-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +63,17 @@
 		CDF375DF29A5FF690053F390 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CDF375E229A603970053F390 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		CDF375E529A604210053F390 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
+		CDF375E829A6145C0053F390 /* UItextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UItextField+Extensions.swift"; sourceTree = "<group>"; };
+		CDF375EC29A623F90053F390 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		CDF375F029A63A210053F390 /* Satoshi-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Regular.otf"; sourceTree = "<group>"; };
+		CDF375F829A63A210053F390 /* Satoshi-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Bold.otf"; sourceTree = "<group>"; };
+		CDF3760629A63E820053F390 /* FFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFL.txt; sourceTree = "<group>"; };
+		CDF3760729A63EE40053F390 /* Supreme-Extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Supreme-Extrabold.otf"; sourceTree = "<group>"; };
+		CDF3760A29A63F030053F390 /* Supreme-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Supreme-Regular.otf"; sourceTree = "<group>"; };
+		CDF3760B29A63F030053F390 /* Supreme-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Supreme-Italic.otf"; sourceTree = "<group>"; };
+		CDF3760C29A63F030053F390 /* Supreme-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Supreme-Medium.otf"; sourceTree = "<group>"; };
+		CDF3761129A63F680053F390 /* FFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FFL.txt; sourceTree = "<group>"; };
+		CDF3761529A63FCC0053F390 /* Supreme-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Supreme-Bold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +104,7 @@
 		CDF375A029A5FC680053F390 = {
 			isa = PBXGroup;
 			children = (
+				CDF375EE29A639EA0053F390 /* Fonts */,
 				CDF375AB29A5FC680053F390 /* Swagger */,
 				CDF375C229A5FC6A0053F390 /* SwaggerTests */,
 				CDF375CC29A5FC6B0053F390 /* SwaggerUITests */,
@@ -103,6 +125,7 @@
 		CDF375AB29A5FC680053F390 /* Swagger */ = {
 			isa = PBXGroup;
 			children = (
+				CDF375E729A614480053F390 /* Extensions */,
 				CDF375E429A6040D0053F390 /* Constants */,
 				CDF375E129A6037F0053F390 /* Views */,
 				CDF375DE29A5FF490053F390 /* ViewControllers */,
@@ -171,6 +194,63 @@
 				CDF375E529A604210053F390 /* UIConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		CDF375E729A614480053F390 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CDF375E829A6145C0053F390 /* UItextField+Extensions.swift */,
+				CDF375EC29A623F90053F390 /* UIImage+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CDF375EE29A639EA0053F390 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CDF3760429A63E2E0053F390 /* Supreme */,
+				CDF375EF29A639FF0053F390 /* Satoshi */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CDF375EF29A639FF0053F390 /* Satoshi */ = {
+			isa = PBXGroup;
+			children = (
+				CDF3760529A63E820053F390 /* License */,
+				CDF375F829A63A210053F390 /* Satoshi-Bold.otf */,
+				CDF375F029A63A210053F390 /* Satoshi-Regular.otf */,
+			);
+			path = Satoshi;
+			sourceTree = "<group>";
+		};
+		CDF3760429A63E2E0053F390 /* Supreme */ = {
+			isa = PBXGroup;
+			children = (
+				CDF3761029A63F680053F390 /* License */,
+				CDF3760B29A63F030053F390 /* Supreme-Italic.otf */,
+				CDF3760C29A63F030053F390 /* Supreme-Medium.otf */,
+				CDF3761529A63FCC0053F390 /* Supreme-Bold.otf */,
+				CDF3760A29A63F030053F390 /* Supreme-Regular.otf */,
+				CDF3760729A63EE40053F390 /* Supreme-Extrabold.otf */,
+			);
+			path = Supreme;
+			sourceTree = "<group>";
+		};
+		CDF3760529A63E820053F390 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				CDF3760629A63E820053F390 /* FFL.txt */,
+			);
+			path = License;
+			sourceTree = "<group>";
+		};
+		CDF3761029A63F680053F390 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				CDF3761129A63F680053F390 /* FFL.txt */,
+			);
+			path = License;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,8 +357,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDF3760F29A63F030053F390 /* Supreme-Medium.otf in Resources */,
+				CDF3760D29A63F030053F390 /* Supreme-Regular.otf in Resources */,
 				CDF375B929A5FC6A0053F390 /* LaunchScreen.storyboard in Resources */,
+				CDF3761229A63F680053F390 /* FFL.txt in Resources */,
+				CDF3760E29A63F030053F390 /* Supreme-Italic.otf in Resources */,
 				CDF375B629A5FC6A0053F390 /* Assets.xcassets in Resources */,
+				CDF3760829A63EE40053F390 /* Supreme-Extrabold.otf in Resources */,
+				CDF3760229A63A220053F390 /* Satoshi-Bold.otf in Resources */,
+				CDF3761629A63FCC0053F390 /* Supreme-Bold.otf in Resources */,
+				CDF375FA29A63A220053F390 /* Satoshi-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,9 +394,11 @@
 				CDF375B129A5FC680053F390 /* LoginViewController.swift in Sources */,
 				CDF375E029A5FF690053F390 /* MainCoordinator.swift in Sources */,
 				CDF375AD29A5FC680053F390 /* AppDelegate.swift in Sources */,
+				CDF375E929A6145C0053F390 /* UItextField+Extensions.swift in Sources */,
 				CDF375E329A603970053F390 /* LoginView.swift in Sources */,
 				CDF375AF29A5FC680053F390 /* SceneDelegate.swift in Sources */,
 				CDF375E629A604210053F390 /* UIConstants.swift in Sources */,
+				CDF375ED29A623F90053F390 /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,22 +9,35 @@ import UIKit
 
 class LoginView: UIView {
 
+    lazy var usernameLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIConstants.textColor
+        label.backgroundColor = UIConstants.backgroundColor
+        label.font = UIFont(name: "Supreme-Extrabold", size: 12)
+
+        label.text = " E-MAIL "
+        return label
+    }()
+
+    lazy var passwordLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIConstants.textColor
+        label.backgroundColor = UIConstants.backgroundColor
+        label.font = UIFont(name: "Supreme-Extrabold", size: 12)
+        label.text = " LOZINKA "
+        return label
+    }()
+
     lazy var usernameInput: UITextField = {
         let textField = UITextField()
-        textField.textColor = UIConstants.textColor
-        textField.layer.borderWidth = 1.5
-        textField.layer.borderColor = UIConstants.textColor.cgColor
-        textField.layer.cornerRadius = 10
+        textField.setupBasicFrame()
         return textField
     }()
 
     lazy var passwordInput: UITextField = {
         let textField = UITextField()
-        textField.textColor = UIConstants.textColor
-        textField.layer.borderWidth = 1.5
-        textField.layer.borderColor = UIConstants.textColor.cgColor
-        textField.layer.cornerRadius = 10
-
+        textField.setupBasicFrame()
+        textField.setupPasswordToggle(in: UIConstants.elementHeight * 0.45)
         return textField
     }()
 
@@ -33,13 +46,14 @@ class LoginView: UIView {
         button.backgroundColor = UIConstants.buttonColor
         button.setTitleColor(UIConstants.backgroundColor, for: .normal)
         button.layer.cornerRadius = UIConstants.elementHeight / 2
+        button.titleLabel?.font = UIFont(name: "Supreme-Bold", size: 17)!
         button.setTitle("LOG IN", for: .normal)
         return button
     }()
 
     init() {
         super.init(frame: .zero)
-//        setupUI()
+        //        setupUI()
     }
 
     required init?(coder: NSCoder) {
@@ -51,10 +65,16 @@ class LoginView: UIView {
         addSubview(usernameInput)
         addSubview(passwordInput)
         addSubview(submitButton)
+        addSubview(usernameLabel)
+        addSubview(passwordLabel)
 
         usernameInput.translatesAutoresizingMaskIntoConstraints = false
         passwordInput.translatesAutoresizingMaskIntoConstraints = false
         submitButton.translatesAutoresizingMaskIntoConstraints = false
+        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
+        passwordLabel.translatesAutoresizingMaskIntoConstraints = false
+
+
 
         NSLayoutConstraint.activate([
             passwordInput.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -68,7 +88,13 @@ class LoginView: UIView {
             submitButton.topAnchor.constraint(equalTo: passwordInput.bottomAnchor, constant: UIConstants.margin),
             submitButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             submitButton.widthAnchor.constraint(equalTo: passwordInput.widthAnchor),
-            submitButton.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight)
+            submitButton.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight),
+            usernameLabel.heightAnchor.constraint(equalTo: usernameInput.heightAnchor, multiplier: 0.2),
+            usernameLabel.topAnchor.constraint(equalTo: usernameInput.topAnchor, constant: -5),
+            usernameLabel.leadingAnchor.constraint(equalTo: usernameInput.leadingAnchor, constant: UIConstants.margin / 2.5),
+            passwordLabel.heightAnchor.constraint(equalTo: passwordInput.heightAnchor, multiplier: 0.2),
+            passwordLabel.topAnchor.constraint(equalTo: passwordInput.topAnchor, constant: -5),
+            passwordLabel.leadingAnchor.constraint(equalTo: passwordInput.leadingAnchor, constant: UIConstants.margin / 2.5)
         ])
     }
 }

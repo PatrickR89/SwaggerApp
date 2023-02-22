@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIdentifier</key>
+	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Satoshi-Bold.otf</string>
+		<string>Satoshi-Regular.otf</string>
+		<string>Supreme-Italic.otf</string>
+		<string>Supreme-Medium.otf</string>
+		<string>Supreme-Regular.otf</string>
+		<string>Supreme-Bold.otf</string>
+		<string>Supreme-Extrabold.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
