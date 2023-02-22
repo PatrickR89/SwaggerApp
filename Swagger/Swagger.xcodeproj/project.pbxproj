@@ -16,6 +16,8 @@
 		CDF375CE29A5FC6B0053F390 /* SwaggerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375CD29A5FC6B0053F390 /* SwaggerUITests.swift */; };
 		CDF375D029A5FC6B0053F390 /* SwaggerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375CF29A5FC6B0053F390 /* SwaggerUITestsLaunchTests.swift */; };
 		CDF375E029A5FF690053F390 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375DF29A5FF690053F390 /* MainCoordinator.swift */; };
+		CDF375E329A603970053F390 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375E229A603970053F390 /* LoginView.swift */; };
+		CDF375E629A604210053F390 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375E529A604210053F390 /* UIConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		CDF375CD29A5FC6B0053F390 /* SwaggerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerUITests.swift; sourceTree = "<group>"; };
 		CDF375CF29A5FC6B0053F390 /* SwaggerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CDF375DF29A5FF690053F390 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		CDF375E229A603970053F390 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		CDF375E529A604210053F390 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +103,11 @@
 		CDF375AB29A5FC680053F390 /* Swagger */ = {
 			isa = PBXGroup;
 			children = (
+				CDF375E429A6040D0053F390 /* Constants */,
+				CDF375E129A6037F0053F390 /* Views */,
 				CDF375DE29A5FF490053F390 /* ViewControllers */,
 				CDF375DD29A5FF3F0053F390 /* Coordinators */,
 				CDF375DC29A5FF330053F390 /* Core */,
-				CDF375AC29A5FC680053F390 /* AppDelegate.swift */,
-				CDF375AE29A5FC680053F390 /* SceneDelegate.swift */,
-				CDF375B529A5FC6A0053F390 /* Assets.xcassets */,
-				CDF375B729A5FC6A0053F390 /* LaunchScreen.storyboard */,
 				CDF375BA29A5FC6A0053F390 /* Info.plist */,
 			);
 			path = Swagger;
@@ -131,6 +133,10 @@
 		CDF375DC29A5FF330053F390 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CDF375AC29A5FC680053F390 /* AppDelegate.swift */,
+				CDF375AE29A5FC680053F390 /* SceneDelegate.swift */,
+				CDF375B529A5FC6A0053F390 /* Assets.xcassets */,
+				CDF375B729A5FC6A0053F390 /* LaunchScreen.storyboard */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -149,6 +155,22 @@
 				CDF375B029A5FC680053F390 /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CDF375E129A6037F0053F390 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CDF375E229A603970053F390 /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CDF375E429A6040D0053F390 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CDF375E529A604210053F390 /* UIConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,7 +306,9 @@
 				CDF375B129A5FC680053F390 /* LoginViewController.swift in Sources */,
 				CDF375E029A5FF690053F390 /* MainCoordinator.swift in Sources */,
 				CDF375AD29A5FC680053F390 /* AppDelegate.swift in Sources */,
+				CDF375E329A603970053F390 /* LoginView.swift in Sources */,
 				CDF375AF29A5FC680053F390 /* SceneDelegate.swift in Sources */,
+				CDF375E629A604210053F390 /* UIConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
