@@ -63,6 +63,7 @@ class DetailsTableViewController: UIViewController {
     func addButton() {
         view.addSubview(logoutButton)
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
+        logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             logoutButton.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight),
@@ -72,5 +73,9 @@ class DetailsTableViewController: UIViewController {
                 constant: -UIConstants.margin),
             logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+    }
+
+    @objc func logout() {
+        controller.requestLogout()
     }
 }

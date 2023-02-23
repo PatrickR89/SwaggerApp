@@ -6,15 +6,23 @@
 //
 
 import UIKit
+import Combine
+
+protocol DetailsControllerActions: AnyObject {
+    func controllerDidRequestLogout()
+}
 
 class DetailsController {
 
-    var diffableDataSource: UITableViewDiffableDataSource<Int, String>?
-    var details = [DetailViewModel]() {
+    private(set) var diffableDataSource: UITableViewDiffableDataSource<Int, String>?
+    // details published for test purpose
+    @Published private(set) var details = [DetailViewModel]() {
         didSet {
             updateSnapshot()
         }
     }
+
+    weak var actions: DetailsControllerActions?
 
     func setupDataSource(for tableView: UITableView) {
         let diffableDataSource = UITableViewDiffableDataSource
@@ -25,11 +33,9 @@ class DetailsController {
                 for: indexPath) as? DetailCell else {
                 fatalError("Cell not found")
             }
-
-            if let detail = self?.details[indexPath.row] {
+            if let detail = self?.details.first(where: {$0.key == itemIdentifier}) {
                 cell.setupViewModel(detail)
             }
-
             return cell
         }
 
@@ -37,7 +43,7 @@ class DetailsController {
         updateSnapshot()
     }
 
-    func updateSnapshot() {
+    private func updateSnapshot() {
         guard let diffableDataSource = diffableDataSource else {
             return
         }
@@ -51,28 +57,21 @@ class DetailsController {
         diffableDataSource.apply(snapshot)
     }
 
-    func userRecieved(_ user: UserResponse) {
+    func populateDataWith(_ user: UserResponseFiltered) {
 
         let userMirror = Mirror(reflecting: user)
         for attribute in userMirror.children {
-            var keyLabel = ""
 
-            var valueLabel = "\(attribute.value)"
-            if attribute.value as? Int == -1 {
-                valueLabel = "Nepoznato"
-            }
-
+            let valueLabel = "\(attribute.value)"
             let key = getPropertyText(attribute.label!)
-
-            let viewModel = DetailViewModel(key: keyLabel, value: valueLabel)
+            let viewModel = DetailViewModel(key: key, value: valueLabel)
             details.append(viewModel)
         }
     }
 
-    func getPropertyText(_ key: String) -> String {
+    private func getPropertyText(_ key: String) -> String {
 
         switch key {
-
         case UserProperties.id.rawValue:
             return "ID"
         case UserProperties.name.rawValue:
@@ -96,5 +95,11 @@ class DetailsController {
         default:
             return ""
         }
+    }
+
+    func requestLogout() {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(nil, forKey: "AccessToken")
+        actions?.controllerDidRequestLogout()
     }
 }

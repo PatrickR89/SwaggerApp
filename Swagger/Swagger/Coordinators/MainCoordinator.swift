@@ -10,22 +10,47 @@ import UIKit
 class MainCoordinator {
 
     private let navController: UINavigationController
-    let apiService: APIService
-    let loginController = LoginController()
-    var detailsController: DetailsController?
+    private let apiService: APIService
+    private let loginController = LoginController()
+    private var detailsController: DetailsController?
 
     init(_ navController: UINavigationController, _ service: APIService) {
         self.navController = navController
         self.apiService = service
         loginController.actions = service
+        apiService.actions = self
     }
 
     func start() {
-//        let loginViewController = LoginViewController(loginController)
-//        navController.pushViewController(loginViewController, animated: true)
+
+        if UserDefaults.standard.string(forKey: "AccessToken") == nil {
+            let loginViewController = LoginViewController(loginController)
+            navController.setViewControllers([loginViewController], animated: true)
+        } else {
+            apiService.fetchUserData()
+        }
+    }
+
+    func initiateDetailViewController(for userData: UserResponseFiltered) {
+
         detailsController = DetailsController()
+        detailsController?.actions = self
         guard let detailsController = detailsController else { return }
+        detailsController.populateDataWith(userData)
+
         let detailsViewController = DetailsTableViewController(detailsController)
-        navController.pushViewController(detailsViewController, animated: true)
+        navController.setViewControllers([detailsViewController], animated: true)
+    }
+}
+
+extension MainCoordinator: APIServiceActions {
+    func service(didRecieve userData: UserResponseFiltered) {
+        initiateDetailViewController(for: userData)
+    }
+}
+
+extension MainCoordinator: DetailsControllerActions {
+    func controllerDidRequestLogout() {
+        start()
     }
 }

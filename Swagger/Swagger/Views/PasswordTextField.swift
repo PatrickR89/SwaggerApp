@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PasswordTextFieldDelegate: AnyObject {
-    func didToggleVisibility()
+    func toggleVisibility()
 }
 
 class PasswordTextField: UITextField {
@@ -34,6 +34,6 @@ class PasswordTextField: UITextField {
     }
 
     @objc func togglePasswordVisibility() {
-        visibilityDelegate?.didToggleVisibility()
+        visibilityDelegate?.toggleVisibility()
     }
 }

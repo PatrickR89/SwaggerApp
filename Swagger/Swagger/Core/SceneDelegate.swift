@@ -17,16 +17,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions) {
 
-        guard let windowScene: UIWindowScene = (scene as? UIWindowScene) else { return }
+            guard let windowScene: UIWindowScene = (scene as? UIWindowScene) else { return }
 
-        let navController = UINavigationController()
-        let service = APIService()
-        mainCoordinator = MainCoordinator(navController, service)
-        mainCoordinator?.start()
+            let navController = UINavigationController()
+            let service = APIService()
+            navController.view.backgroundColor = UIConstants.backgroundColor
+            mainCoordinator = MainCoordinator(navController, service)
+            mainCoordinator?.start()
 
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
-        window?.rootViewController = navController
-        window?.makeKeyAndVisible()
-    }
+            window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+            window?.windowScene = windowScene
+            window?.rootViewController = navController
+            window?.makeKeyAndVisible()
+        }
 }

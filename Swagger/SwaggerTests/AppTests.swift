@@ -1,5 +1,5 @@
 //
-//  LoginTests.swift
+//  AppTests.swift
 //  SwaggerTests
 //
 //  Created by Patrick on 23.02.2023..
@@ -9,13 +9,15 @@ import XCTest
 @testable import Swagger
 import Combine
 
-final class LoginTests: XCTestCase {
+final class AppTests: XCTestCase {
 
     private var mainCoordinator: MainCoordinator?
+    private var apiService: MockAPIService?
     private var cancellables = Set<AnyCancellable>()
 
     override func setUp() {
-        mainCoordinator = MainCoordinator(UINavigationController(), MockAPIService())
+        apiService = MockAPIService()
+        mainCoordinator = MainCoordinator(UINavigationController(), apiService!)
 
     }
 
@@ -45,5 +47,20 @@ final class LoginTests: XCTestCase {
 
         wait(for: [expectation], timeout: 3)
 
+    }
+
+    func testFetchData() {
+
+        apiService?.fetchUserData()
+        let expectation = XCTestExpectation(description: "Fetch user data")
+        guard let detailsController = mainCoordinator?.detailsController else {
+            fatalError("Details Controller did not initialize")
+        }
+        detailsController.$details.sink(receiveValue: { details in
+            XCTAssertFalse(details.isEmpty)
+            expectation.fulfill()
+        }).store(in: &cancellables)
+
+        wait(for: [expectation], timeout: 10)
     }
 }

@@ -42,7 +42,7 @@ class LoginController {
 }
 
 extension LoginController: PasswordTextFieldDelegate {
-    func didToggleVisibility() {
+    func toggleVisibility() {
         isPasswordVisible = !isPasswordVisible
     }
 }
