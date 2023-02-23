@@ -20,7 +20,11 @@ class MockAPIService: APIService {
     }
 
     override func fetchUserData() {
-        let testData = UserResponse(id: 22, name: "asd", surname: "asd", fullName: nil, imageId: nil, adress: "asd", phonenumber: "dfsf", oib: nil, email: "asdasd", statusId: 99)
+        let testData = UserResponse(
+            id: 22, name: "asd", surname: "asd",
+            fullName: nil, imageId: nil, adress: "asd",
+            phonenumber: "dfsf", oib: nil,
+            email: "asdasd", statusId: 99)
 
         self.actions?.service(didRecieve: UserResponseFiltered(user: testData))
     }

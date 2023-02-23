@@ -22,7 +22,7 @@ class LoginController {
     private(set) var password = ""
     @Published private(set) var isPasswordVisible = true
     @Published private(set) var isRequestLoading = false
-    @Published private(set) var warning: String? = "Some warning"
+    @Published private(set) var warning: String? = "Neispravan e-mail i/ili lozinka"
 
     weak var actions: LoginControllerActions?
 
@@ -55,6 +55,12 @@ extension LoginController: PasswordTextFieldDelegate {
 }
 
 extension LoginController: APIServiceDelegate {
+    func service(didRecieve errorMessage: String) {
+        DispatchQueue.main.async {
+            self.warning = errorMessage
+        }
+    }
+
     func service(isWaiting: Bool) {
         isRequestLoading = isWaiting
     }

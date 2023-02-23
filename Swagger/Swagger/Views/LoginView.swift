@@ -40,6 +40,7 @@ class LoginView: UIView {
         label.backgroundColor = UIConstants.warningColor
         label.textColor = .red
         label.layer.cornerRadius = UIConstants.elementHeight / 2
+        label.font = UIFont(name: "Supreme-Bold", size: 17)!
         label.layer.masksToBounds = true
 
         return label
@@ -244,7 +245,7 @@ private extension LoginView {
         warningLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            warningLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            warningLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -25),
             warningLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
             warningLabel.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight),
             warningLabel.centerXAnchor.constraint(equalTo: centerXAnchor)

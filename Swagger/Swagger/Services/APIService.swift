@@ -10,6 +10,7 @@ import Combine
 
 protocol APIServiceDelegate: AnyObject {
     func service(isWaiting: Bool)
+    func service(didRecieve errorMessage: String)
 }
 
 protocol APIServiceActions: AnyObject {
@@ -29,7 +30,7 @@ class APIService: NSObject {
         self.token = UserDefaults.standard.string(forKey: "AccessToken")
     }
 
-    private func login(_ model: LoginRequestModel) {
+    func login(_ model: LoginRequestModel) {
 
         let url = URL(string: "\(APIConstants.apiUrl)\(APIConstants.loginApi)")!
 
@@ -44,8 +45,22 @@ class APIService: NSObject {
             guard error == nil else {
                 DispatchQueue.main.async { [weak self] in
                     self?.delegate?.service(isWaiting: false)
+                    self?.delegate?.service(didRecieve: error!.localizedDescription)
                 }
 
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse else { return }
+            guard response.statusCode == 200 else {
+                if response.statusCode == 403 || response.statusCode == 401 {
+                    self?.delegate?.service(didRecieve: "Neispravan e-mail i/ili lozinka")
+                } else if response.statusCode >= 400 && response.statusCode < 500 {
+                    self?.delegate?.service(didRecieve: "Greška u zahtjevu")
+                } else if response.statusCode >= 500 {
+                    self?.delegate?.service(didRecieve: "Greška u serveru")
+                }
+                self?.delegate?.service(isWaiting: false)
                 return
             }
 
@@ -80,8 +95,20 @@ class APIService: NSObject {
             guard error == nil else {
                 DispatchQueue.main.async { [weak self] in
                     self?.delegate?.service(isWaiting: false)
+                    self?.delegate?.service(didRecieve: error!.localizedDescription)
                 }
 
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse else { return }
+            guard response.statusCode == 200 else {
+                 if response.statusCode >= 400 && response.statusCode < 500 {
+                    self?.delegate?.service(didRecieve: "Greška u zahtjevu")
+                } else if response.statusCode >= 500 {
+                    self?.delegate?.service(didRecieve: "Greška u serveru")
+                }
+                self?.delegate?.service(isWaiting: false)
                 return
             }
 
