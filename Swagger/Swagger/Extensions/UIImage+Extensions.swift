@@ -13,7 +13,9 @@ extension UIImage {
         let scale = newWidth / size.width
         let newHeight = size.height * scale
 
-        let renderRect = CGRect(origin: .zero, size: CGSize(width: newWidth, height: newHeight))
+        let renderRect = CGRect(
+            origin: .zero,
+            size: CGSize(width: newWidth, height: newHeight))
         return renderResizedImage(in: renderRect)
     }
 

@@ -12,13 +12,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var mainCoordinator: MainCoordinator?
 
-
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    func scene(
+        _ scene: UIScene,
+        willConnectTo session: UISceneSession,
+        options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let windowScene: UIWindowScene = (scene as? UIWindowScene) else { return }
-        
+
         let navController = UINavigationController()
-        mainCoordinator = MainCoordinator(navController)
+        let service = APIService()
+        mainCoordinator = MainCoordinator(navController, service)
         mainCoordinator?.start()
 
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
@@ -27,4 +30,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 }
-

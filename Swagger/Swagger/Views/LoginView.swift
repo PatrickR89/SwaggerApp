@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class LoginView: UIView {
+
+    private let controller: LoginController
+    private var cancellables = Set<AnyCancellable>()
 
     lazy var usernameLabel: UILabel = {
         let label = UILabel()
@@ -34,8 +38,8 @@ class LoginView: UIView {
         return textField
     }()
 
-    lazy var passwordInput: UITextField = {
-        let textField = UITextField()
+    lazy var passwordInput: PasswordTextField = {
+        let textField = PasswordTextField()
         textField.setupBasicFrame()
         textField.setupPasswordToggle(in: UIConstants.elementHeight * 0.45)
         return textField
@@ -51,50 +55,123 @@ class LoginView: UIView {
         return button
     }()
 
-    init() {
+    init(_ controller: LoginController) {
+        self.controller = controller
         super.init(frame: .zero)
-        //        setupUI()
+        setupBindings()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func defineFrame(frame: CGRect) {
+        self.frame = frame
+        setupUI()
+    }
+
     func setupUI() {
         backgroundColor = UIConstants.backgroundColor
-        addSubview(usernameInput)
+        addPasswordInput()
+        addUsernameInput()
+        addSubmitButton()
+        addUsernameLabel()
+        addPasswordLabel()
+    }
+
+    private func setupBindings() {
+        controller.$isPasswordVisible.sink { [weak self] isVisible in
+            self?.passwordInput.isSecureTextEntry = isVisible
+        }
+        .store(in: &cancellables)
+    }
+
+    @objc private func submitCredentials() {
+        controller.requestLogin()
+        passwordInput.text = ""
+    }
+}
+
+extension LoginView: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else {return}
+        if textField == usernameInput {
+            controller.editUserCredentials(.email, text)
+        } else if textField == passwordInput {
+            controller.editUserCredentials(.password, text)
+        }
+    }
+}
+
+private extension LoginView {
+
+    func addPasswordInput() {
         addSubview(passwordInput)
-        addSubview(submitButton)
-        addSubview(usernameLabel)
-        addSubview(passwordLabel)
-
-        usernameInput.translatesAutoresizingMaskIntoConstraints = false
         passwordInput.translatesAutoresizingMaskIntoConstraints = false
-        submitButton.translatesAutoresizingMaskIntoConstraints = false
-        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
-        passwordLabel.translatesAutoresizingMaskIntoConstraints = false
-
-
+        passwordInput.delegate = self
+        passwordInput.visibilityDelegate = controller
 
         NSLayoutConstraint.activate([
             passwordInput.centerXAnchor.constraint(equalTo: centerXAnchor),
             passwordInput.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -(bounds.height / 4)),
+            passwordInput.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
+            passwordInput.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight)
+        ])
+    }
+
+    func addUsernameInput() {
+        addSubview(usernameInput)
+        usernameInput.translatesAutoresizingMaskIntoConstraints = false
+        usernameInput.delegate = self
+
+        NSLayoutConstraint.activate([
             usernameInput.centerXAnchor.constraint(equalTo: centerXAnchor),
             usernameInput.bottomAnchor.constraint(equalTo: passwordInput.topAnchor, constant: -UIConstants.margin),
-            passwordInput.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
             usernameInput.widthAnchor.constraint(equalTo: passwordInput.widthAnchor),
-            passwordInput.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight),
-            usernameInput.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight),
+            usernameInput.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight)
+        ])
+    }
+
+    func addSubmitButton() {
+        addSubview(submitButton)
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
+        submitButton.addTarget(self, action: #selector(submitCredentials), for: .touchUpInside)
+
+        NSLayoutConstraint.activate([
             submitButton.topAnchor.constraint(equalTo: passwordInput.bottomAnchor, constant: UIConstants.margin),
             submitButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             submitButton.widthAnchor.constraint(equalTo: passwordInput.widthAnchor),
-            submitButton.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight),
+            submitButton.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight)
+        ])
+    }
+
+    func addUsernameLabel() {
+        addSubview(usernameLabel)
+        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
             usernameLabel.heightAnchor.constraint(equalTo: usernameInput.heightAnchor, multiplier: 0.2),
-            usernameLabel.topAnchor.constraint(equalTo: usernameInput.topAnchor, constant: -5),
-            usernameLabel.leadingAnchor.constraint(equalTo: usernameInput.leadingAnchor, constant: UIConstants.margin / 2.5),
+            usernameLabel.topAnchor.constraint(
+                equalTo: usernameInput.topAnchor,
+                constant: -UIConstants.labelVerticalPosition),
+            usernameLabel.leadingAnchor.constraint(
+                equalTo: usernameInput.leadingAnchor,
+                constant: UIConstants.margin / 2.5)
+        ])
+    }
+
+    func addPasswordLabel() {
+        addSubview(passwordLabel)
+        passwordLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
             passwordLabel.heightAnchor.constraint(equalTo: passwordInput.heightAnchor, multiplier: 0.2),
-            passwordLabel.topAnchor.constraint(equalTo: passwordInput.topAnchor, constant: -5),
-            passwordLabel.leadingAnchor.constraint(equalTo: passwordInput.leadingAnchor, constant: UIConstants.margin / 2.5)
+            passwordLabel.topAnchor.constraint(
+                equalTo: passwordInput.topAnchor,
+                constant: -UIConstants.labelVerticalPosition),
+            passwordLabel.leadingAnchor.constraint(
+                equalTo: passwordInput.leadingAnchor,
+                constant: UIConstants.margin / 2.5)
         ])
     }
 }

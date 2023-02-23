@@ -13,5 +13,5 @@ struct UIConstants {
     static let textColor = UIColor(white: 1, alpha: 0.9)
     static let margin: CGFloat = 35
     static let elementHeight: CGFloat = 50
+    static let labelVerticalPosition: CGFloat = 5
 }
-
