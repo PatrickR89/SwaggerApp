@@ -12,6 +12,7 @@ class MainCoordinator {
     private let navController: UINavigationController
     let apiService: APIService
     let loginController = LoginController()
+    var detailsController: DetailsController?
 
     init(_ navController: UINavigationController, _ service: APIService) {
         self.navController = navController
@@ -20,7 +21,11 @@ class MainCoordinator {
     }
 
     func start() {
-        let loginViewController = LoginViewController(loginController)
-        navController.pushViewController(loginViewController, animated: true)
+//        let loginViewController = LoginViewController(loginController)
+//        navController.pushViewController(loginViewController, animated: true)
+        detailsController = DetailsController()
+        guard let detailsController = detailsController else { return }
+        let detailsViewController = DetailsTableViewController(detailsController)
+        navController.pushViewController(detailsViewController, animated: true)
     }
 }

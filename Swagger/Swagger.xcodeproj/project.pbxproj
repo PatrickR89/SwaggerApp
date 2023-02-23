@@ -34,6 +34,10 @@
 		CDF3762729A6734C0053F390 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3762629A6734C0053F390 /* APIConstants.swift */; };
 		CDF3762929A741820053F390 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3762829A741820053F390 /* LoginTests.swift */; };
 		CDF3762C29A743090053F390 /* MockApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3762B29A743090053F390 /* MockApiService.swift */; };
+		CDF3762F29A752840053F390 /* DetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3762E29A752840053F390 /* DetailsTableViewController.swift */; };
+		CDF3763129A753370053F390 /* DetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3763029A753370053F390 /* DetailsController.swift */; };
+		CDF3763329A7544C0053F390 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3763229A7544C0053F390 /* DetailCell.swift */; };
+		CDF3763629A754840053F390 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3763529A754840053F390 /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +82,10 @@
 		CDF3762629A6734C0053F390 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		CDF3762829A741820053F390 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		CDF3762B29A743090053F390 /* MockApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApiService.swift; sourceTree = "<group>"; };
+		CDF3762E29A752840053F390 /* DetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewController.swift; sourceTree = "<group>"; };
+		CDF3763029A753370053F390 /* DetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsController.swift; sourceTree = "<group>"; };
+		CDF3763229A7544C0053F390 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
+		CDF3763529A754840053F390 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +128,7 @@
 		CDF375AB29A5FC680053F390 /* Swagger */ = {
 			isa = PBXGroup;
 			children = (
+				CDF3763429A7546B0053F390 /* ViewModels */,
 				CDF3761F29A64D5D0053F390 /* Models */,
 				CDF3761C29A64C120053F390 /* Services */,
 				CDF3761729A6432C0053F390 /* Controllers */,
@@ -166,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				CDF375B029A5FC680053F390 /* LoginViewController.swift */,
+				CDF3762E29A752840053F390 /* DetailsTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -175,6 +185,7 @@
 			children = (
 				CDF375E229A603970053F390 /* LoginView.swift */,
 				CDF3761A29A645680053F390 /* PasswordTextField.swift */,
+				CDF3763229A7544C0053F390 /* DetailCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				CDF3761829A6433B0053F390 /* LoginController.swift */,
+				CDF3763029A753370053F390 /* DetailsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -269,6 +281,14 @@
 				CDF3762429A654250053F390 /* UserResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CDF3763429A7546B0053F390 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CDF3763529A754840053F390 /* DetailViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,10 +422,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDF3763129A753370053F390 /* DetailsController.swift in Sources */,
+				CDF3762F29A752840053F390 /* DetailsTableViewController.swift in Sources */,
+				CDF3763329A7544C0053F390 /* DetailCell.swift in Sources */,
 				CDF3761B29A645680053F390 /* PasswordTextField.swift in Sources */,
 				CDF3762129A64D6B0053F390 /* LoginModel.swift in Sources */,
 				CDF375B129A5FC680053F390 /* LoginViewController.swift in Sources */,
 				CDF375E029A5FF690053F390 /* MainCoordinator.swift in Sources */,
+				CDF3763629A754840053F390 /* DetailViewModel.swift in Sources */,
 				CDF375AD29A5FC680053F390 /* AppDelegate.swift in Sources */,
 				CDF3762329A653C60053F390 /* BearerModel.swift in Sources */,
 				CDF375E929A6145C0053F390 /* UItextField+Extensions.swift in Sources */,

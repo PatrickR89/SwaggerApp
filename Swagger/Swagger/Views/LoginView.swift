@@ -61,6 +61,10 @@ class LoginView: UIView {
         setupBindings()
     }
 
+    deinit {
+        cancellables = []
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
