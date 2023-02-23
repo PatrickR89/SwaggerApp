@@ -7,6 +7,9 @@
 
 import Foundation
 
+/// - DetailViewModel:
+/// View Model structure created for purpose of defining required values for DetailCell.
+
 struct DetailViewModel {
     let key: String
     let value: String

@@ -59,45 +59,20 @@ class DetailsController {
         diffableDataSource.apply(snapshot)
     }
 
-    func populateDataWith(_ user: UserResponseFiltered) {
+    func populateDataWith(_ user: UserResponse) {
 
-        let userMirror = Mirror(reflecting: user)
-        for attribute in userMirror.children {
-
-            let valueLabel = "\(attribute.value)"
-            let key = getPropertyText(attribute.label!)
-            let viewModel = DetailViewModel(key: key, value: valueLabel)
-            details.append(viewModel)
-        }
-    }
-
-    private func getPropertyText(_ key: String) -> String {
-
-        switch key {
-
-        case UserProperties.id.rawValue:
-            return "ID"
-        case UserProperties.name.rawValue:
-            return "Ime"
-        case UserProperties.surname.rawValue:
-            return "Prezime"
-        case UserProperties.fullName.rawValue:
-            return "Puno ime"
-        case UserProperties.imageId.rawValue:
-            return "ID slike"
-        case UserProperties.adress.rawValue:
-            return "Adresa"
-        case UserProperties.phonenumber.rawValue:
-            return "Broj mobitela"
-        case UserProperties.oib.rawValue:
-            return "OIB"
-        case UserProperties.email.rawValue:
-            return "E-mail"
-        case UserProperties.statusId.rawValue:
-            return "Status"
-        default:
-            return ""
-        }
+        details = [
+            DetailViewModel(key: "ID", value: "\(user.id)"),
+            DetailViewModel(key: "Ime", value: user.name ?? "Nepoznato"),
+            DetailViewModel(key: "Prezime", value: user.surname ?? "Nepoznato"),
+            DetailViewModel(key: "Puno ime", value: user.fullName ?? "Nepoznato"),
+            DetailViewModel(key: "ID slike", value: user.imageId == nil ? "Nepoznato" : "\(user.imageId!)"),
+            DetailViewModel(key: "Adresa", value: user.adress ?? "Nepoznato"),
+            DetailViewModel(key: "Broj mobitela", value: user.phonenumber ?? "Nepoznato"),
+            DetailViewModel(key: "OIB", value: user.oib ?? "Nepoznato"),
+            DetailViewModel(key: "E-mail", value: user.email ?? "Nepoznato"),
+            DetailViewModel(key: "Status", value: "\(user.statusId)")
+        ]
     }
 
     func requestLogout() {

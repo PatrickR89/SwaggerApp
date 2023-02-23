@@ -21,7 +21,7 @@
 		CDF3760D29A63F030053F390 /* Supreme-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF3760A29A63F030053F390 /* Supreme-Regular.otf */; };
 		CDF3760E29A63F030053F390 /* Supreme-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF3760B29A63F030053F390 /* Supreme-Italic.otf */; };
 		CDF3760F29A63F030053F390 /* Supreme-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF3760C29A63F030053F390 /* Supreme-Medium.otf */; };
-		CDF3761229A63F680053F390 /* FFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDF3761129A63F680053F390 /* FFL.txt */; };
+		CDF3761229A63F680053F390 /* FFL-Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDF3761129A63F680053F390 /* FFL-Licence.txt */; };
 		CDF3761629A63FCC0053F390 /* Supreme-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF3761529A63FCC0053F390 /* Supreme-Bold.otf */; };
 		CDF3761929A6433B0053F390 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3761829A6433B0053F390 /* LoginController.swift */; };
 		CDF3761B29A645680053F390 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3761A29A645680053F390 /* PasswordTextField.swift */; };
@@ -69,7 +69,7 @@
 		CDF3760A29A63F030053F390 /* Supreme-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Supreme-Regular.otf"; sourceTree = "<group>"; };
 		CDF3760B29A63F030053F390 /* Supreme-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Supreme-Italic.otf"; sourceTree = "<group>"; };
 		CDF3760C29A63F030053F390 /* Supreme-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Supreme-Medium.otf"; sourceTree = "<group>"; };
-		CDF3761129A63F680053F390 /* FFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FFL.txt; sourceTree = "<group>"; };
+		CDF3761129A63F680053F390 /* FFL-Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "FFL-Licence.txt"; sourceTree = "<group>"; };
 		CDF3761529A63FCC0053F390 /* Supreme-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Supreme-Bold.otf"; sourceTree = "<group>"; };
 		CDF3761829A6433B0053F390 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		CDF3761A29A645680053F390 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
@@ -236,7 +236,7 @@
 		CDF3761029A63F680053F390 /* License */ = {
 			isa = PBXGroup;
 			children = (
-				CDF3761129A63F680053F390 /* FFL.txt */,
+				CDF3761129A63F680053F390 /* FFL-Licence.txt */,
 			);
 			path = License;
 			sourceTree = "<group>";
@@ -368,7 +368,7 @@
 				CDF3760F29A63F030053F390 /* Supreme-Medium.otf in Resources */,
 				CDF3760D29A63F030053F390 /* Supreme-Regular.otf in Resources */,
 				CDF375B929A5FC6A0053F390 /* LaunchScreen.storyboard in Resources */,
-				CDF3761229A63F680053F390 /* FFL.txt in Resources */,
+				CDF3761229A63F680053F390 /* FFL-Licence.txt in Resources */,
 				CDF3760E29A63F030053F390 /* Supreme-Italic.otf in Resources */,
 				CDF375B629A5FC6A0053F390 /* Assets.xcassets in Resources */,
 				CDF3760829A63EE40053F390 /* Supreme-Extrabold.otf in Resources */,

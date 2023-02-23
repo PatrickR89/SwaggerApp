@@ -8,20 +8,32 @@
 import Foundation
 import Combine
 
+/// - APIServiceDelegate:
+/// - Protocol containing functions called from API service, with the destination of LoginController
 protocol APIServiceDelegate: AnyObject {
+    /// Delegate method used to report if APIService is waiting for response upon sent request.
+    /// - Parameter isWaiting: Boolean value to define state and trigger affected elements.
     func service(isWaiting: Bool)
+    /// Delegate method used to proceed with recieved error messages.
+    /// - Parameter errorMessage: String with value of either localized description of recieved error or defined by recieved codes in response if not 200.
     func service(didRecieve errorMessage: String)
 }
 
+/// - APIServiceAction:
+/// - APIService protocol with the target of MainCoordinator providing recieved data
 protocol APIServiceActions: AnyObject {
-    func service(didRecieve userData: UserResponseFiltered)
+    /// Protocol method to forward recieved data.
+    /// - Parameter userData: Decoded data from HTTP response
+    func service(didRecieve userData: UserResponse)
 }
 
+/// - APIService:
+/// Class containing all HTTP requests and JSON codings, in order to centralize methods with same purpose/goal.
+/// Class contains an optional published token, for future requests and test cases.
 class APIService: NSObject {
 
     @Published var token: String?
 
-    private(set) var inRequest = false
     weak var delegate: APIServiceDelegate?
     weak var actions: APIServiceActions?
 
@@ -29,6 +41,9 @@ class APIService: NSObject {
         super.init()
         self.token = UserDefaults.standard.string(forKey: "AccessToken")
     }
+
+    /// - login method:
+    /// Encodes recieved model to JSON, attaching it to URLRequest, with required headers. Sends the request to designated API, awaiting response with required token
 
     func login(_ model: LoginRequestModel) {
 
@@ -41,10 +56,10 @@ class APIService: NSObject {
 
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
 
-            guard error == nil else {
+            if let error = error {
                 DispatchQueue.main.async { [weak self] in
                     self?.delegate?.service(isWaiting: false)
-                    self?.delegate?.service(didRecieve: error!.localizedDescription)
+                    self?.delegate?.service(didRecieve: error.localizedDescription)
                 }
 
                 return
@@ -63,8 +78,14 @@ class APIService: NSObject {
                 return
             }
 
-            guard let data = data else {return}
-            guard let respData = try? JSONDecoder().decode(LoginResponseModel.self, from: data) else {return}
+            guard let data = data else {
+                self?.delegate?.service(didRecieve: "Greška u preuzimanju podataka")
+                return
+            }
+            guard let respData = try? JSONDecoder().decode(LoginResponseModel.self, from: data) else {
+                self?.delegate?.service(didRecieve: "Greška u preuzimanju podataka")
+                return
+            }
             self?.token = respData.accessToken
             let userDefaults = UserDefaults.standard
             userDefaults.set(respData.accessToken, forKey: "AccessToken")
@@ -76,6 +97,10 @@ class APIService: NSObject {
         delegate?.service(isWaiting: true)
         task.resume()
     }
+
+    /// - fetchUserData:
+    /// Method sends HTTP request with required authorization token in header, in order to recieve data.
+    /// Recieved data is decoded from JSON and sent via delegate.
 
     func fetchUserData() {
         let url = URL(string: "\(APIConstants.apiUrl)\(APIConstants.fetchUserApi)")!
@@ -90,10 +115,10 @@ class APIService: NSObject {
         request.timeoutInterval = 5
 
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-            guard error == nil else {
+            if let error = error {
                 DispatchQueue.main.async { [weak self] in
                     self?.delegate?.service(isWaiting: false)
-                    self?.delegate?.service(didRecieve: error!.localizedDescription)
+                    self?.delegate?.service(didRecieve: error.localizedDescription)
                 }
 
                 return
@@ -110,12 +135,17 @@ class APIService: NSObject {
                 return
             }
 
-            guard let data = data else {return}
-            guard let respData = try? JSONDecoder().decode(UserResponse.self, from: data) else {return}
+            guard let data = data else {
+                self?.delegate?.service(didRecieve: "Greška u preuzimanju podataka")
+                return
+            }
+            guard let respData = try? JSONDecoder().decode(UserResponse.self, from: data) else {
+                self?.delegate?.service(didRecieve: "Greška u preuzimanju podataka")
+                return
+            }
             self?.delegate?.service(isWaiting: false)
-            let filtered = UserResponseFiltered(user: respData)
             DispatchQueue.main.async {
-                self?.actions?.service(didRecieve: filtered)
+                self?.actions?.service(didRecieve: respData)
             }
         }
 

@@ -7,6 +7,9 @@
 
 import UIKit
 
+/// - UIConstants:
+/// Structure containig static constants of often required UI values.
+
 struct UIConstants {
     static let backgroundColor = UIColor(red: 4/255, green: 32/255, blue: 64/255, alpha: 1)
     static let buttonColor = UIColor(red: 141/255, green: 223/255, blue: 209/255, alpha: 1)

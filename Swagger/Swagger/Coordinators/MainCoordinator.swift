@@ -32,7 +32,7 @@ class MainCoordinator {
         }
     }
 
-    func initiateDetailViewController(for userData: UserResponseFiltered) {
+    func initiateDetailViewController(for userData: UserResponse) {
 
         detailsController = DetailsController()
         detailsController?.actions = self
@@ -45,7 +45,7 @@ class MainCoordinator {
 }
 
 extension MainCoordinator: APIServiceActions {
-    func service(didRecieve userData: UserResponseFiltered) {
+    func service(didRecieve userData: UserResponse) {
         initiateDetailViewController(for: userData)
     }
 }
