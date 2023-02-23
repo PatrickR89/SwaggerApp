@@ -33,9 +33,11 @@ class DetailsController {
                 for: indexPath) as? DetailCell else {
                 fatalError("Cell not found")
             }
+
             if let detail = self?.details.first(where: {$0.key == itemIdentifier}) {
                 cell.setupViewModel(detail)
             }
+
             return cell
         }
 
@@ -72,6 +74,7 @@ class DetailsController {
     private func getPropertyText(_ key: String) -> String {
 
         switch key {
+
         case UserProperties.id.rawValue:
             return "ID"
         case UserProperties.name.rawValue:

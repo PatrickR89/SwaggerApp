@@ -6,8 +6,6 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Satoshi-Bold.otf</string>
-		<string>Satoshi-Regular.otf</string>
 		<string>Supreme-Italic.otf</string>
 		<string>Supreme-Medium.otf</string>
 		<string>Supreme-Regular.otf</string>

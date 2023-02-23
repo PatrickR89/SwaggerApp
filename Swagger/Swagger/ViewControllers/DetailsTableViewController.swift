@@ -16,10 +16,7 @@ class DetailsTableViewController: UIViewController {
 
     lazy var logoutButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIConstants.buttonColor
-        button.setTitleColor(UIConstants.backgroundColor, for: .normal)
-        button.layer.cornerRadius = UIConstants.elementHeight / 2
-        button.titleLabel?.font = UIFont(name: "Supreme-Bold", size: 17)!
+        button.createStandardButton()
         button.setTitle("LOG OUT", for: .normal)
         return button
     }()

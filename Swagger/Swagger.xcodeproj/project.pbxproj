@@ -15,10 +15,8 @@
 		CDF375E029A5FF690053F390 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375DF29A5FF690053F390 /* MainCoordinator.swift */; };
 		CDF375E329A603970053F390 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375E229A603970053F390 /* LoginView.swift */; };
 		CDF375E629A604210053F390 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375E529A604210053F390 /* UIConstants.swift */; };
-		CDF375E929A6145C0053F390 /* UItextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375E829A6145C0053F390 /* UItextField+Extensions.swift */; };
+		CDF375E929A6145C0053F390 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375E829A6145C0053F390 /* UITextField+Extensions.swift */; };
 		CDF375ED29A623F90053F390 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF375EC29A623F90053F390 /* UIImage+Extensions.swift */; };
-		CDF375FA29A63A220053F390 /* Satoshi-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF375F029A63A210053F390 /* Satoshi-Regular.otf */; };
-		CDF3760229A63A220053F390 /* Satoshi-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF375F829A63A210053F390 /* Satoshi-Bold.otf */; };
 		CDF3760829A63EE40053F390 /* Supreme-Extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF3760729A63EE40053F390 /* Supreme-Extrabold.otf */; };
 		CDF3760D29A63F030053F390 /* Supreme-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF3760A29A63F030053F390 /* Supreme-Regular.otf */; };
 		CDF3760E29A63F030053F390 /* Supreme-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDF3760B29A63F030053F390 /* Supreme-Italic.otf */; };
@@ -38,6 +36,9 @@
 		CDF3763129A753370053F390 /* DetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3763029A753370053F390 /* DetailsController.swift */; };
 		CDF3763329A7544C0053F390 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3763229A7544C0053F390 /* DetailCell.swift */; };
 		CDF3763629A754840053F390 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3763529A754840053F390 /* DetailViewModel.swift */; };
+		CDF3763B29A7C8BD0053F390 /* LoginView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3763A29A7C8BD0053F390 /* LoginView+Extension.swift */; };
+		CDF3763D29A7C9740053F390 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3763C29A7C9740053F390 /* UILabel+Extensions.swift */; };
+		CDF3763F29A7CA510053F390 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3763E29A7CA510053F390 /* UIButton+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,11 +63,8 @@
 		CDF375DF29A5FF690053F390 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CDF375E229A603970053F390 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		CDF375E529A604210053F390 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
-		CDF375E829A6145C0053F390 /* UItextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UItextField+Extensions.swift"; sourceTree = "<group>"; };
+		CDF375E829A6145C0053F390 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		CDF375EC29A623F90053F390 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
-		CDF375F029A63A210053F390 /* Satoshi-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Regular.otf"; sourceTree = "<group>"; };
-		CDF375F829A63A210053F390 /* Satoshi-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Bold.otf"; sourceTree = "<group>"; };
-		CDF3760629A63E820053F390 /* FFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFL.txt; sourceTree = "<group>"; };
 		CDF3760729A63EE40053F390 /* Supreme-Extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Supreme-Extrabold.otf"; sourceTree = "<group>"; };
 		CDF3760A29A63F030053F390 /* Supreme-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Supreme-Regular.otf"; sourceTree = "<group>"; };
 		CDF3760B29A63F030053F390 /* Supreme-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Supreme-Italic.otf"; sourceTree = "<group>"; };
@@ -86,6 +84,9 @@
 		CDF3763029A753370053F390 /* DetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsController.swift; sourceTree = "<group>"; };
 		CDF3763229A7544C0053F390 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		CDF3763529A754840053F390 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		CDF3763A29A7C8BD0053F390 /* LoginView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView+Extension.swift"; sourceTree = "<group>"; };
+		CDF3763C29A7C9740053F390 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		CDF3763E29A7CA510053F390 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +184,7 @@
 		CDF375E129A6037F0053F390 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CDF3763929A7C8A40053F390 /* Extensions */,
 				CDF375E229A603970053F390 /* LoginView.swift */,
 				CDF3761A29A645680053F390 /* PasswordTextField.swift */,
 				CDF3763229A7544C0053F390 /* DetailCell.swift */,
@@ -202,8 +204,10 @@
 		CDF375E729A614480053F390 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CDF375E829A6145C0053F390 /* UItextField+Extensions.swift */,
+				CDF375E829A6145C0053F390 /* UITextField+Extensions.swift */,
 				CDF375EC29A623F90053F390 /* UIImage+Extensions.swift */,
+				CDF3763C29A7C9740053F390 /* UILabel+Extensions.swift */,
+				CDF3763E29A7CA510053F390 /* UIButton+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -212,19 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				CDF3760429A63E2E0053F390 /* Supreme */,
-				CDF375EF29A639FF0053F390 /* Satoshi */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		CDF375EF29A639FF0053F390 /* Satoshi */ = {
-			isa = PBXGroup;
-			children = (
-				CDF3760529A63E820053F390 /* License */,
-				CDF375F829A63A210053F390 /* Satoshi-Bold.otf */,
-				CDF375F029A63A210053F390 /* Satoshi-Regular.otf */,
-			);
-			path = Satoshi;
 			sourceTree = "<group>";
 		};
 		CDF3760429A63E2E0053F390 /* Supreme */ = {
@@ -238,14 +231,6 @@
 				CDF3760729A63EE40053F390 /* Supreme-Extrabold.otf */,
 			);
 			path = Supreme;
-			sourceTree = "<group>";
-		};
-		CDF3760529A63E820053F390 /* License */ = {
-			isa = PBXGroup;
-			children = (
-				CDF3760629A63E820053F390 /* FFL.txt */,
-			);
-			path = License;
 			sourceTree = "<group>";
 		};
 		CDF3761029A63F680053F390 /* License */ = {
@@ -291,6 +276,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		CDF3763929A7C8A40053F390 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CDF3763A29A7C8BD0053F390 /* LoginView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -301,7 +294,6 @@
 				CDF375A529A5FC680053F390 /* Sources */,
 				CDF375A629A5FC680053F390 /* Frameworks */,
 				CDF375A729A5FC680053F390 /* Resources */,
-				CDF3762D29A74BDD0053F390 /* Lint Source */,
 			);
 			buildRules = (
 			);
@@ -380,9 +372,7 @@
 				CDF3760E29A63F030053F390 /* Supreme-Italic.otf in Resources */,
 				CDF375B629A5FC6A0053F390 /* Assets.xcassets in Resources */,
 				CDF3760829A63EE40053F390 /* Supreme-Extrabold.otf in Resources */,
-				CDF3760229A63A220053F390 /* Satoshi-Bold.otf in Resources */,
 				CDF3761629A63FCC0053F390 /* Supreme-Bold.otf in Resources */,
-				CDF375FA29A63A220053F390 /* Satoshi-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,28 +385,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		CDF3762D29A74BDD0053F390 /* Lint Source */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Lint Source";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint lint\nelse\n   echo \"warning: SwiftLint not installed\"\nfi \n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		CDF375A529A5FC680053F390 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -428,16 +396,19 @@
 				CDF3761B29A645680053F390 /* PasswordTextField.swift in Sources */,
 				CDF3762129A64D6B0053F390 /* LoginModel.swift in Sources */,
 				CDF375B129A5FC680053F390 /* LoginViewController.swift in Sources */,
+				CDF3763D29A7C9740053F390 /* UILabel+Extensions.swift in Sources */,
 				CDF375E029A5FF690053F390 /* MainCoordinator.swift in Sources */,
 				CDF3763629A754840053F390 /* DetailViewModel.swift in Sources */,
+				CDF3763F29A7CA510053F390 /* UIButton+Extensions.swift in Sources */,
 				CDF375AD29A5FC680053F390 /* AppDelegate.swift in Sources */,
 				CDF3762329A653C60053F390 /* BearerModel.swift in Sources */,
-				CDF375E929A6145C0053F390 /* UItextField+Extensions.swift in Sources */,
+				CDF375E929A6145C0053F390 /* UITextField+Extensions.swift in Sources */,
 				CDF3761E29A64C2F0053F390 /* APIService.swift in Sources */,
 				CDF3761929A6433B0053F390 /* LoginController.swift in Sources */,
 				CDF375E329A603970053F390 /* LoginView.swift in Sources */,
 				CDF375AF29A5FC680053F390 /* SceneDelegate.swift in Sources */,
 				CDF3762729A6734C0053F390 /* APIConstants.swift in Sources */,
+				CDF3763B29A7C8BD0053F390 /* LoginView+Extension.swift in Sources */,
 				CDF3762529A654250053F390 /* UserResponse.swift in Sources */,
 				CDF375E629A604210053F390 /* UIConstants.swift in Sources */,
 				CDF375ED29A623F90053F390 /* UIImage+Extensions.swift in Sources */,

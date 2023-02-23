@@ -22,7 +22,7 @@ class LoginController {
     private(set) var password = ""
     @Published private(set) var isPasswordVisible = true
     @Published private(set) var isRequestLoading = false
-    @Published private(set) var warning: String? = "Neispravan e-mail i/ili lozinka"
+    @Published private(set) var warning: String?
 
     weak var actions: LoginControllerActions?
 
@@ -37,10 +37,6 @@ class LoginController {
 
     func requestLogin() {
         actions?.loginController(didRequestLoginFor: email, with: password)
-    }
-
-    func test() {
-        print(email, password)
     }
 
     func nullifyWarning() {

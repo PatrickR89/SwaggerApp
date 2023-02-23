@@ -10,39 +10,27 @@ import Combine
 
 class LoginView: UIView {
 
-    private let controller: LoginController
+    let controller: LoginController
     private var cancellables = Set<AnyCancellable>()
     var spinner = UIActivityIndicatorView(style: .large)
 
     lazy var usernameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIConstants.textColor
-        label.backgroundColor = UIConstants.backgroundColor
-        label.font = UIFont(name: "Supreme-Extrabold", size: 12)
-
+        label.createSMLabel()
         label.text = " E-MAIL "
         return label
     }()
 
     lazy var passwordLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIConstants.textColor
-        label.backgroundColor = UIConstants.backgroundColor
-        label.font = UIFont(name: "Supreme-Extrabold", size: 12)
+        label.createSMLabel()
         label.text = " LOZINKA "
         return label
     }()
 
     lazy var warningLabel: UILabel = {
         let label = UILabel()
-        label.text = "warning"
-        label.textAlignment = .center
-        label.backgroundColor = UIConstants.warningColor
-        label.textColor = .red
-        label.layer.cornerRadius = UIConstants.elementHeight / 2
-        label.font = UIFont(name: "Supreme-Bold", size: 17)!
-        label.layer.masksToBounds = true
-
+        label.createWarningLabel()
         return label
     }()
 
@@ -61,11 +49,7 @@ class LoginView: UIView {
 
     lazy var submitButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIConstants.buttonColor
-        button.setTitleColor(UIConstants.backgroundColor, for: .normal)
-        button.setTitleColor(.gray, for: .disabled)
-        button.layer.cornerRadius = UIConstants.elementHeight / 2
-        button.titleLabel?.font = UIFont(name: "Supreme-Bold", size: 17)!
+        button.createStandardButton()
         button.setTitle("LOG IN", for: .normal)
         return button
     }()
@@ -133,7 +117,7 @@ class LoginView: UIView {
         }.store(in: &cancellables)
     }
 
-    @objc private func submitCredentials() {
+    @objc func submitCredentials() {
         controller.requestLogin()
         passwordInput.text = ""
     }
@@ -147,108 +131,5 @@ extension LoginView: UITextFieldDelegate {
         } else if textField == passwordInput {
             controller.editUserCredentials(.password, text)
         }
-    }
-}
-
-private extension LoginView {
-
-    func addPasswordInput() {
-        addSubview(passwordInput)
-        passwordInput.translatesAutoresizingMaskIntoConstraints = false
-        passwordInput.delegate = self
-        passwordInput.visibilityDelegate = controller
-
-        NSLayoutConstraint.activate([
-            passwordInput.centerXAnchor.constraint(equalTo: centerXAnchor),
-            passwordInput.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -(bounds.height / 4)),
-            passwordInput.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
-            passwordInput.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight)
-        ])
-    }
-
-    func addUsernameInput() {
-        addSubview(usernameInput)
-        usernameInput.translatesAutoresizingMaskIntoConstraints = false
-        usernameInput.delegate = self
-
-        NSLayoutConstraint.activate([
-            usernameInput.centerXAnchor.constraint(equalTo: centerXAnchor),
-            usernameInput.bottomAnchor.constraint(equalTo: passwordInput.topAnchor, constant: -UIConstants.margin),
-            usernameInput.widthAnchor.constraint(equalTo: passwordInput.widthAnchor),
-            usernameInput.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight)
-        ])
-    }
-
-    func addSubmitButton() {
-        addSubview(submitButton)
-        submitButton.translatesAutoresizingMaskIntoConstraints = false
-        submitButton.addTarget(self, action: #selector(submitCredentials), for: .touchUpInside)
-
-        NSLayoutConstraint.activate([
-            submitButton.topAnchor.constraint(equalTo: passwordInput.bottomAnchor, constant: UIConstants.margin),
-            submitButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            submitButton.widthAnchor.constraint(equalTo: passwordInput.widthAnchor),
-            submitButton.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight)
-        ])
-    }
-
-    func addUsernameLabel() {
-        addSubview(usernameLabel)
-        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            usernameLabel.heightAnchor.constraint(equalTo: usernameInput.heightAnchor, multiplier: 0.2),
-            usernameLabel.topAnchor.constraint(
-                equalTo: usernameInput.topAnchor,
-                constant: -UIConstants.labelVerticalPosition),
-            usernameLabel.leadingAnchor.constraint(
-                equalTo: usernameInput.leadingAnchor,
-                constant: UIConstants.margin / 2.5)
-        ])
-    }
-
-    func addPasswordLabel() {
-        addSubview(passwordLabel)
-        passwordLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            passwordLabel.heightAnchor.constraint(equalTo: passwordInput.heightAnchor, multiplier: 0.2),
-            passwordLabel.topAnchor.constraint(
-                equalTo: passwordInput.topAnchor,
-                constant: -UIConstants.labelVerticalPosition),
-            passwordLabel.leadingAnchor.constraint(
-                equalTo: passwordInput.leadingAnchor,
-                constant: UIConstants.margin / 2.5)
-        ])
-    }
-
-    func addSpinner() {
-        addSubview(spinner)
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.color = .white
-        spinner.startAnimating()
-        submitButton.isEnabled = false
-
-        NSLayoutConstraint.activate([
-            spinner.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -5),
-            spinner.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
-    }
-
-    func removeSpinner() {
-        spinner.stopAnimating()
-        submitButton.isEnabled = true
-    }
-
-    func addWarningLabel() {
-        addSubview(warningLabel)
-        warningLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            warningLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -25),
-            warningLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
-            warningLabel.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight),
-            warningLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
     }
 }

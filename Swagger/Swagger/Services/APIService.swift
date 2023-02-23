@@ -33,7 +33,6 @@ class APIService: NSObject {
     func login(_ model: LoginRequestModel) {
 
         let url = URL(string: "\(APIConstants.apiUrl)\(APIConstants.loginApi)")!
-
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = try? JSONEncoder().encode(model)
@@ -75,7 +74,6 @@ class APIService: NSObject {
         }
 
         delegate?.service(isWaiting: true)
-
         task.resume()
     }
 
@@ -84,8 +82,8 @@ class APIService: NSObject {
         guard let token = token else {
             return
         }
-        let bearer = BearerModel(token)
 
+        let bearer = BearerModel(token)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = [bearer.key: bearer.value, "Accept": "*/*", "Content-Type": "application/json"]
@@ -103,7 +101,7 @@ class APIService: NSObject {
 
             guard let response = response as? HTTPURLResponse else { return }
             guard response.statusCode == 200 else {
-                 if response.statusCode >= 400 && response.statusCode < 500 {
+                if response.statusCode >= 400 && response.statusCode < 500 {
                     self?.delegate?.service(didRecieve: "Greška u zahtjevu")
                 } else if response.statusCode >= 500 {
                     self?.delegate?.service(didRecieve: "Greška u serveru")
@@ -122,7 +120,6 @@ class APIService: NSObject {
         }
 
         delegate?.service(isWaiting: true)
-
         task.resume()
     }
 }
