@@ -21,6 +21,9 @@ class LoginController {
     private(set) var email = ""
     private(set) var password = ""
     @Published private(set) var isPasswordVisible = true
+    @Published private(set) var isRequestLoading = false
+    @Published private(set) var warning: String? = "Some warning"
+
     weak var actions: LoginControllerActions?
 
     func editUserCredentials(_ credential: UserCredentials, _ value: String) {
@@ -39,10 +42,20 @@ class LoginController {
     func test() {
         print(email, password)
     }
+
+    func nullifyWarning() {
+        warning = nil
+    }
 }
 
 extension LoginController: PasswordTextFieldDelegate {
     func toggleVisibility() {
         isPasswordVisible = !isPasswordVisible
+    }
+}
+
+extension LoginController: APIServiceDelegate {
+    func service(isWaiting: Bool) {
+        isRequestLoading = isWaiting
     }
 }

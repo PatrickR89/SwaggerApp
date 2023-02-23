@@ -18,6 +18,7 @@ class MainCoordinator {
         self.navController = navController
         self.apiService = service
         loginController.actions = service
+        service.delegate = loginController
         apiService.actions = self
     }
 

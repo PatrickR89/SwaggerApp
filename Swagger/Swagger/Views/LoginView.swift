@@ -12,6 +12,7 @@ class LoginView: UIView {
 
     private let controller: LoginController
     private var cancellables = Set<AnyCancellable>()
+    var spinner = UIActivityIndicatorView(style: .large)
 
     lazy var usernameLabel: UILabel = {
         let label = UILabel()
@@ -32,6 +33,18 @@ class LoginView: UIView {
         return label
     }()
 
+    lazy var warningLabel: UILabel = {
+        let label = UILabel()
+        label.text = "warning"
+        label.textAlignment = .center
+        label.backgroundColor = UIConstants.warningColor
+        label.textColor = .red
+        label.layer.cornerRadius = UIConstants.elementHeight / 2
+        label.layer.masksToBounds = true
+
+        return label
+    }()
+
     lazy var usernameInput: UITextField = {
         let textField = UITextField()
         textField.setupBasicFrame()
@@ -49,6 +62,7 @@ class LoginView: UIView {
         let button = UIButton()
         button.backgroundColor = UIConstants.buttonColor
         button.setTitleColor(UIConstants.backgroundColor, for: .normal)
+        button.setTitleColor(.gray, for: .disabled)
         button.layer.cornerRadius = UIConstants.elementHeight / 2
         button.titleLabel?.font = UIFont(name: "Supreme-Bold", size: 17)!
         button.setTitle("LOG IN", for: .normal)
@@ -81,6 +95,7 @@ class LoginView: UIView {
         addSubmitButton()
         addUsernameLabel()
         addPasswordLabel()
+        addWarningLabel()
     }
 
     private func setupBindings() {
@@ -88,6 +103,33 @@ class LoginView: UIView {
             self?.passwordInput.isSecureTextEntry = isVisible
         }
         .store(in: &cancellables)
+
+        controller.$isRequestLoading.sink { [weak self] isLoading in
+
+                if isLoading {
+                    DispatchQueue.main.async {
+                        self?.addSpinner()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self?.removeSpinner()
+                    }
+                }
+
+        }.store(in: &cancellables)
+
+        controller.$warning.sink { [weak self] warning in
+            guard let warning = warning else {
+                self?.warningLabel.isHidden = true
+                return
+            }
+            self?.warningLabel.text = warning
+            self?.warningLabel.isHidden = false
+
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+                self?.controller.nullifyWarning()
+            }
+        }.store(in: &cancellables)
     }
 
     @objc private func submitCredentials() {
@@ -176,6 +218,36 @@ private extension LoginView {
             passwordLabel.leadingAnchor.constraint(
                 equalTo: passwordInput.leadingAnchor,
                 constant: UIConstants.margin / 2.5)
+        ])
+    }
+
+    func addSpinner() {
+        addSubview(spinner)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.color = .white
+        spinner.startAnimating()
+        submitButton.isEnabled = false
+
+        NSLayoutConstraint.activate([
+            spinner.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -5),
+            spinner.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
+    }
+
+    func removeSpinner() {
+        spinner.stopAnimating()
+        submitButton.isEnabled = true
+    }
+
+    func addWarningLabel() {
+        addSubview(warningLabel)
+        warningLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            warningLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            warningLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
+            warningLabel.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight),
+            warningLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 }
