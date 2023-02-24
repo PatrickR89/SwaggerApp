@@ -12,6 +12,8 @@
 		<string>Supreme-Bold.otf</string>
 		<string>Supreme-Extrabold.otf</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
