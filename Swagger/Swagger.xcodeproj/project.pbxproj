@@ -39,6 +39,7 @@
 		CDF3763B29A7C8BD0053F390 /* LoginView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3763A29A7C8BD0053F390 /* LoginView+Extension.swift */; };
 		CDF3763D29A7C9740053F390 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3763C29A7C9740053F390 /* UILabel+Extensions.swift */; };
 		CDF3763F29A7CA510053F390 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3763E29A7CA510053F390 /* UIButton+Extensions.swift */; };
+		CDF3764229A8C9E70053F390 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3764129A8C9E70053F390 /* LoginTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		CDF3763A29A7C8BD0053F390 /* LoginView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView+Extension.swift"; sourceTree = "<group>"; };
 		CDF3763C29A7C9740053F390 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		CDF3763E29A7CA510053F390 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		CDF3764129A8C9E70053F390 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			children = (
 				CDF3762829A741820053F390 /* AppTests.swift */,
 				CDF3762B29A743090053F390 /* MockApiService.swift */,
+				CDF3764129A8C9E70053F390 /* LoginTests.swift */,
 			);
 			path = SwaggerTests;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDF3764229A8C9E70053F390 /* LoginTests.swift in Sources */,
 				CDF3762C29A743090053F390 /* MockApiService.swift in Sources */,
 				CDF3762929A741820053F390 /* AppTests.swift in Sources */,
 			);

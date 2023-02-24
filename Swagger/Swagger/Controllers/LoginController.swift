@@ -25,8 +25,8 @@ protocol LoginControllerActions: AnyObject {
 ///  - Parameter isRequestLoading: Bool value, toggled by ``APIService`` methods to present application state while waiting on response upon sent request
 ///  - Parameter warning: Optional string, changed by ``APIService`` methods, in case notNil value triggers warning label show in ``LoginView`` with recieved message
 class LoginController {
-    private(set) var email = ""
-    private(set) var password = ""
+    @Published private(set) var email = ""
+    @Published private(set) var password = ""
     @Published private(set) var isPasswordVisible = true
     @Published private(set) var isRequestLoading = false
     @Published private(set) var warning: String?

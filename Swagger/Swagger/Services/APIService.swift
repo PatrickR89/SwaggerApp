@@ -23,6 +23,7 @@ protocol APIServiceActions: AnyObject {
     /// Protocol method to forward recieved data.
     /// - Parameter userData: Decoded data from HTTP response
     func service(didRecieve userData: UserResponse)
+    func serviceDidFailToFetchData()
 }
 
 /// Class containing all HTTP requests and JSON codings, in order to centralize methods with same purpose/goal.
@@ -116,6 +117,7 @@ class APIService: NSObject {
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
                     self?.delegate?.service(isWaiting: false)
+                    self?.actions?.serviceDidFailToFetchData()
                     self?.delegate?.service(didRecieve: error.localizedDescription)
                 }
 
@@ -125,8 +127,10 @@ class APIService: NSObject {
             guard let response = response as? HTTPURLResponse else { return }
             guard response.statusCode == 200 else {
                 if response.statusCode >= 400 && response.statusCode < 500 {
+                    self?.actions?.serviceDidFailToFetchData()
                     self?.delegate?.service(didRecieve: "Greška u zahtjevu")
                 } else if response.statusCode >= 500 {
+                    self?.actions?.serviceDidFailToFetchData()
                     self?.delegate?.service(didRecieve: "Greška u serveru")
                 }
                 self?.delegate?.service(isWaiting: false)
@@ -134,11 +138,13 @@ class APIService: NSObject {
             }
 
             guard let data = data else {
+                self?.actions?.serviceDidFailToFetchData()
                 self?.delegate?.service(didRecieve: "Greška u preuzimanju podataka")
                 self?.delegate?.service(isWaiting: false)
                 return
             }
             guard let respData = try? JSONDecoder().decode(UserResponse.self, from: data) else {
+                self?.actions?.serviceDidFailToFetchData()
                 self?.delegate?.service(didRecieve: "Greška u preuzimanju podataka")
                 self?.delegate?.service(isWaiting: false)
                 return

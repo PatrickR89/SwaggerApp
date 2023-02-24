@@ -26,6 +26,6 @@ class MockAPIService: APIService {
             phonenumber: "dfsf", oib: nil,
             email: "asdasd", statusId: 99)
 
-        self.actions?.service(didRecieve: UserResponseFiltered(user: testData))
+        self.actions?.service(didRecieve: testData)
     }
 }

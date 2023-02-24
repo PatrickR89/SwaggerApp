@@ -14,10 +14,10 @@ import UIKit
 /// - Parameter detailsController: ``DetailsController`` instance containing details functionality
 class MainCoordinator {
 
-    private let navController: UINavigationController
-    private let apiService: APIService
-    private let loginController = LoginController()
-    private var detailsController: DetailsController?
+    let navController: UINavigationController
+    let apiService: APIService
+    let loginController = LoginController()
+    private(set) var detailsController: DetailsController?
 
     /// Coordinator initializes with given parameters, also setting up delegacies
     /// - Parameters:
@@ -57,6 +57,13 @@ class MainCoordinator {
 }
 
 extension MainCoordinator: APIServiceActions {
+    func serviceDidFailToFetchData() {
+        if navController.viewControllers.isEmpty {
+            UserDefaults.standard.setValue(nil, forKey: "AccessToken")
+            start()
+        }
+    }
+
     func service(didRecieve userData: UserResponse) {
         initiateDetailViewController(for: userData)
     }
