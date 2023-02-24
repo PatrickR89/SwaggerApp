@@ -8,6 +8,10 @@
 import UIKit
 import Combine
 
+/// View rendered in ``LoginViewController`` containing elements related to UI
+///  - Parameter controller: LoginController containing logic and functionality
+///  - Parameter cancellables: Set of AnyCancellable object imported in Combine, storing all subscriptions
+
 class LoginView: UIView {
 
     let controller: LoginController
@@ -31,6 +35,7 @@ class LoginView: UIView {
     lazy var warningLabel: UILabel = {
         let label = UILabel()
         label.createWarningLabel()
+        label.numberOfLines = 0
         return label
     }()
 
@@ -83,6 +88,7 @@ class LoginView: UIView {
         addWarningLabel()
     }
 
+    /// Method to setup all subscriptions for reactive changes provided by ``LoginController``
     private func setupBindings() {
         controller.$isPasswordVisible.sink { [weak self] isVisible in
             self?.passwordInput.isSecureTextEntry = isVisible
@@ -124,6 +130,7 @@ class LoginView: UIView {
 }
 
 extension LoginView: UITextFieldDelegate {
+    /// Method which listens to textFields text value changes forwarding new value to ``LoginController``
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else {return}
         if textField == usernameInput {

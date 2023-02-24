@@ -9,6 +9,7 @@ import UIKit
 
 extension LoginView {
 
+    /// Method adding and setting constraints for ``passwordInput``. Method has to be first in calling, as other elements depend on constraint of ``passwordInput``
     func addPasswordInput() {
         addSubview(passwordInput)
         passwordInput.translatesAutoresizingMaskIntoConstraints = false
@@ -23,6 +24,7 @@ extension LoginView {
         ])
     }
 
+    /// Method adding and setting constraints for ``usernameInput`` - technically emailInput
     func addUsernameInput() {
         addSubview(usernameInput)
         usernameInput.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +38,7 @@ extension LoginView {
         ])
     }
 
+    /// Method adding and setting constraints for ``submitButton``
     func addSubmitButton() {
         addSubview(submitButton)
         submitButton.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +52,7 @@ extension LoginView {
         ])
     }
 
+    /// Method adding and setting constraints for ``usernameLabel``. Depends on ``usernameInput``
     func addUsernameLabel() {
         addSubview(usernameLabel)
         usernameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +68,7 @@ extension LoginView {
         ])
     }
 
+    /// Method adding and setting constraints for ``passwordLabel``. Depends on ``passwordInput``
     func addPasswordLabel() {
         addSubview(passwordLabel)
         passwordLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -79,6 +84,7 @@ extension LoginView {
         ])
     }
 
+    /// Method adding and setting constraints for ``spinner`` and disabling ``submitButton``
     func addSpinner() {
         addSubview(spinner)
         spinner.translatesAutoresizingMaskIntoConstraints = false
@@ -92,19 +98,21 @@ extension LoginView {
         ])
     }
 
+    /// Method for removing ``spinner`` and enabling ``submitButton``
     func removeSpinner() {
         spinner.stopAnimating()
         submitButton.isEnabled = true
     }
 
+    /// Method adding and setting constraints for ``warningLabel``. Depends on ``usernameInput``
     func addWarningLabel() {
         addSubview(warningLabel)
         warningLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            warningLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -25),
+            warningLabel.bottomAnchor.constraint(equalTo: usernameInput.topAnchor, constant: -5),
             warningLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
-            warningLabel.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight),
+            warningLabel.heightAnchor.constraint(equalToConstant: UIConstants.elementHeight - 5),
             warningLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

@@ -7,6 +7,11 @@
 
 import UIKit
 
+/// Coordinator class responsible for navigating screens
+/// - Parameter navController: `UINavigationController` instance which presents viewControllers
+/// - Parameter apiService: ``APIService`` instance for HTTP requests
+/// - Parameter loginController: ``LoginController`` instance containing login functionality
+/// - Parameter detailsController: ``DetailsController`` instance containing details functionality
 class MainCoordinator {
 
     private let navController: UINavigationController
@@ -14,6 +19,10 @@ class MainCoordinator {
     private let loginController = LoginController()
     private var detailsController: DetailsController?
 
+    /// Coordinator initializes with given parameters, also setting up delegacies
+    /// - Parameters:
+    ///   - navController: `UINavigationController` instance created in `SceneDelegate` and set as rootViewController
+    ///   - service: ``APIService`` instance created in `SceneDelegate`, although not required to be passed from parent, it was designed in such matter in order to have availability for `MockAPIService` in test cases
     init(_ navController: UINavigationController, _ service: APIService) {
         self.navController = navController
         self.apiService = service
@@ -22,6 +31,7 @@ class MainCoordinator {
         apiService.actions = self
     }
 
+    /// Primary function of ``MainCoordinator`` checking availability of `AccessToken`in `UserDefaults`, and presenting proper ViewController based on token result
     func start() {
 
         if UserDefaults.standard.string(forKey: "AccessToken") == nil {
@@ -32,6 +42,8 @@ class MainCoordinator {
         }
     }
 
+    /// Helper method with task of creating and presenting instance of DetailsViewController
+    /// - Parameter userData: ``UserResponse`` data recieved via ``APIService`` actions delegate from fetch method
     func initiateDetailViewController(for userData: UserResponse) {
 
         detailsController = DetailsController()

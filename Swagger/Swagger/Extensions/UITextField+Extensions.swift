@@ -8,6 +8,7 @@
 import UIKit
 
 extension UITextField {
+    /// Method to set up visual output for input fields, separated from ``LoginView`` for cleaner code
     func setupBasicFrame() {
         textColor = UIConstants.textColor
         layer.borderWidth = 1.5

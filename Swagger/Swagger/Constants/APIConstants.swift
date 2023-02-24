@@ -7,7 +7,6 @@
 
 import Foundation
 
-/// - APIConstants:
 /// Structure containing URLs and application ID required for API calls.
 
 struct APIConstants {

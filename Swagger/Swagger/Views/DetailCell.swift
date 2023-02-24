@@ -7,6 +7,9 @@
 
 import UIKit
 
+/// DetailCell conforms to UITableViewCell with the goal of presenting recieved data in UI within tableView
+/// - Parameter keyLabel: UILabel presenting keys recieved from given data
+/// - Parameter valueLabel: UILabel presenting values recieved from given data
 class DetailCell: UITableViewCell {
 
     let keyLabel: UILabel = {
@@ -31,6 +34,7 @@ class DetailCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// Method to set up UI
     func setupUI() {
         contentView.backgroundColor = UIConstants.backgroundColor
         contentView.addSubview(keyLabel)
@@ -48,6 +52,8 @@ class DetailCell: UITableViewCell {
         ])
     }
 
+    /// Method to set up values in labels
+    /// - Parameter viewModel: ``DetailViewModel`` instance containing data recieved from ``UserResponse``
     func setupViewModel(_ viewModel: DetailViewModel) {
         keyLabel.text = "\(viewModel.key):"
         valueLabel.text = viewModel.value

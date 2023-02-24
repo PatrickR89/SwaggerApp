@@ -7,7 +7,6 @@
 
 import UIKit
 
-/// - UIConstants:
 /// Structure containig static constants of often required UI values.
 
 struct UIConstants {

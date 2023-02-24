@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// ViewController responsible for presenting detailed information provided by `service`
 class DetailsTableViewController: UIViewController {
 
     lazy var tableView: UITableView = {
@@ -38,6 +39,7 @@ class DetailsTableViewController: UIViewController {
         setupUI()
     }
 
+    /// Method to set up UI, adding tableView and logoutButton with their constraints
     func setupUI() {
         view.backgroundColor = UIConstants.backgroundColor
         tableView.backgroundColor = UIConstants.backgroundColor
@@ -57,6 +59,7 @@ class DetailsTableViewController: UIViewController {
         ])
     }
 
+    /// Separate method for adding button and it's constraints in order to keep shorter method length
     func addButton() {
         view.addSubview(logoutButton)
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
@@ -72,6 +75,7 @@ class DetailsTableViewController: UIViewController {
         ])
     }
 
+    /// Target action for `logoutButton`
     @objc func logout() {
         controller.requestLogout()
     }

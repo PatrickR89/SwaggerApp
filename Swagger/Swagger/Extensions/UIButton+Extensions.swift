@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIButton {
+    /// Method to create standardized buttons with specific design
     func createStandardButton() {
         backgroundColor = UIConstants.buttonColor
         setTitleColor(UIConstants.backgroundColor, for: .normal)

@@ -11,10 +11,13 @@ protocol PasswordTextFieldDelegate: AnyObject {
     func toggleVisibility()
 }
 
+/// Separate class for passwordInput, conforming to UITextField due to requirement of delegate for usage in toggling secureTextEntry
 class PasswordTextField: UITextField {
 
     weak var visibilityDelegate: PasswordTextFieldDelegate?
 
+    /// Method for adding "eye" icon with available interaction
+    /// - Parameter height: height of the parent class in order to set constraints for the icon
     func setupPasswordToggle(in height: CGFloat) {
         let imageView = UIImageView()
         let image = UIImage(named: "passwordEye")?.resizeImage(height)
